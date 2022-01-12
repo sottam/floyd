@@ -1,14 +1,17 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <QApplication>
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QPalette>
 #include <QLabel>
 #include <QKeyEvent>
-#include <unistd.h>
+#include <QClipboard>
+// #include <unistd.h>
+#include <io.h>
 #include <sys/types.h>
-#include <pwd.h>
+// #include <pwd.h>
 #include <regex>
 #include "window.h"
 using namespace std;
@@ -133,14 +136,20 @@ void Window::writeLine(int index){
             cmd2 = " && xdotool key KP_Enter";
         }
         string cmd = "xdotool type \"" + line + "\"" + cmd2;
-        popen(cmd.c_str(), "r");
+        // popen(cmd.c_str(), "r");
+        // QApplication *app = QApplication.instance();
+        QClipboard *clipboard = QGuiApplication::clipboard();
+        clipboard->setText(QString::fromStdString(line)   // Non-Quoted
+                           .replace("\n","\\n")
+                           .replace("\t","\\t"));
     }
 }
 
 
 string Window::getUserHome(){
-    struct passwd *pw = getpwuid(getuid());
-    const char *homedir = pw->pw_dir;
-    return homedir;
+    // struct passwd *pw = getpwuid(getuid());
+    // const char *homedir = pw->pw_dir;
+    // return homedir;
+    return "C:\\Users\\Alonso";
 }
 

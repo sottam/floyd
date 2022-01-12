@@ -1,6 +1,7 @@
 #include <QApplication>
 #include "window.h"
 #include <iostream>
+#include <windows.h>
 
 
 string VERSION = "0.0.2";
@@ -20,3 +21,10 @@ int main(int argc, char *argv[]) {
     return app.exec();
 }
 
+INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    PSTR lpCmdLine, INT nCmdShow)
+{
+    main(__argc, __argv);
+
+    return 0;
+}

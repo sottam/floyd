@@ -4,7 +4,7 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS
 
 set(floyd_SRCS main.cpp window.cpp)
 
-add_executable(floyd ${floyd_SRCS})
+add_executable(floyd WIN32 ${floyd_SRCS})
 
 target_link_libraries(floyd Qt5::Core Qt5::Widgets)
 
